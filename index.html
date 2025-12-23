@@ -1,127 +1,163 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Promoções HB20 - Acessórios Automotivos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promoções HB20</title>
 
-        header {
-            background-color: #111;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
-        }
+header {
+    background: #111;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
 
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+.filter {
+    background: #fff;
+    padding: 10px;
+    text-align: center;
+}
 
-        .card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+.filter button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background: #ddd;
+    font-size: 14px;
+}
 
-        .card img {
-            max-width: 100%;
-            height: 180px;
-            object-fit: contain;
-        }
+.filter button.active {
+    background: #111;
+    color: #fff;
+}
 
-        .price {
-            font-size: 18px;
-            color: #e63946;
-            font-weight: bold;
-        }
+.container {
+    padding: 15px;
+}
 
-        .old-price {
-            text-decoration: line-through;
-            color: #777;
-            font-size: 14px;
-        }
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
-        .badge {
-            background-color: #e63946;
-            color: white;
-            padding: 5px 10px;
-            font-size: 12px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
 
-        footer {
-            background-color: #111;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
+.badge {
+    background: #e63946;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.price {
+    font-size: 20px;
+    color: #e63946;
+    font-weight: bold;
+}
+
+.old {
+    text-decoration: line-through;
+    color: #777;
+    font-size: 14px;
+}
+
+button.buy {
+    width: 100%;
+    padding: 12px;
+    background: #25d366;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+</style>
+
+<script>
+function filterYear(year) {
+    let cards = document.querySelectorAll('.card');
+    let buttons = document.querySelectorAll('.filter button');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    document.getElementById(year).classList.add('active');
+
+    cards.forEach(card => {
+        if (year === 'all' || card.dataset.year === year) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
         }
-    </style>
+    });
+}
+</script>
 </head>
+
 <body>
 
 <header>
-    <h1>🔥 Promoções Exclusivas HB20</h1>
-    <p>Acessórios automotivos compatíveis com Hyundai HB20</p>
+<h1>🔥 Promoções HB20</h1>
+<p>Acessórios compatíveis com Hyundai HB20</p>
 </header>
 
-<div class="container">
-    <div class="products">
-
-        <div class="card">
-            <span class="badge">PROMOÇÃO</span>
-            <img src="https://via.placeholder.com/300x200" alt="Tapete HB20">
-            <h3>Tapete de Borracha HB20</h3>
-            <p class="old-price">R$ 149,90</p>
-            <p class="price">R$ 99,90</p>
-        </div>
-
-        <div class="card">
-            <span class="badge">PROMOÇÃO</span>
-            <img src="https://via.placeholder.com/300x200" alt="Capa de Banco">
-            <h3>Capa de Banco Couro HB20</h3>
-            <p class="old-price">R$ 399,90</p>
-            <p class="price">R$ 279,90</p>
-        </div>
-
-        <div class="card">
-            <span class="badge">PROMOÇÃO</span>
-            <img src="https://via.placeholder.com/300x200" alt="Central Multimídia">
-            <h3>Central Multimídia HB20</h3>
-            <p class="old-price">R$ 1.499,90</p>
-            <p class="price">R$ 1.099,90</p>
-        </div>
-
-        <div class="card">
-            <span class="badge">PROMOÇÃO</span>
-            <img src="https://via.placeholder.com/300x200" alt="Calha de Chuva">
-            <h3>Calha de Chuva HB20</h3>
-            <p class="old-price">R$ 129,90</p>
-            <p class="price">R$ 89,90</p>
-        </div>
-
-    </div>
+<div class="filter">
+<button id="all" class="active" onclick="filterYear('all')">Todos</button>
+<button id="2013" onclick="filterYear('2013')">2013–2015</button>
+<button id="2016" onclick="filterYear('2016')">2016–2019</button>
+<button id="2020" onclick="filterYear('2020')">2020+</button>
 </div>
 
-<footer>
-    <p>© 2025 Promoções HB20 - Apenas acessórios compatíveis</p>
-</footer>
+<div class="container">
+
+<div class="card" data-year="2013">
+<span class="badge">PROMOÇÃO</span>
+<img src="https://via.placeholder.com/400x250">
+<h3>Tapete de Borracha HB20</h3>
+<p class="old">R$ 149,90</p>
+<p class="price">R$ 99,90</p>
+<a href="https://wa.me/5511954975829?text=Olá!%20Tenho%20interesse%20no%20Tapete%20HB20%202013-2015">
+<button class="buy">Comprar no WhatsApp</button>
+</a>
+</div>
+
+<div class="card" data-year="2016">
+<span class="badge">PROMOÇÃO</span>
+<img src="https://via.placeholder.com/400x250">
+<h3>Capa de Banco Couro HB20</h3>
+<p class="old">R$ 399,90</p>
+<p class="price">R$ 279,90</p>
+<a href="https://wa.me/5511954975829?text=Olá!%20Tenho%20interesse%20na%20Capa%20de%20Banco%20HB20%202016-2019">
+<button class="buy">Comprar no WhatsApp</button>
+</a>
+</div>
+
+<div class="card" data-year="2020">
+<span class="badge">PROMOÇÃO</span>
+<img src="https://via.placeholder.com/400x250">
+<h3>Central Multimídia HB20</h3>
+<p class="old">R$ 1.499,90</p>
+<p class="price">R$ 1.099,90</p>
+<a href="https://wa.me/5511954975829?text=Olá!%20Tenho%20interesse%20na%20Central%20Multimídia%20HB20%202020+">
+<button class="buy">Comprar no WhatsApp</button>
+</a>
+</div>
+
+</div>
 
 </body>
 </html>
